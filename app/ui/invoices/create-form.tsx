@@ -1,4 +1,4 @@
-'use cilent';
+'use client';
 
 import { CustomerField } from '@/app/lib/definitions';
 import Link from 'next/link';
