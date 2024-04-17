@@ -19,12 +19,17 @@ export default function Breadcrumbs({
         {breadcrumbs.map((breadcrumb, index) => (
           <li
             key={breadcrumb.href}
-            aria-current={breadcrumb.active}
+            aria-current={breadcrumb.active ? 'page' : undefined} // Adjust aria-current attribute
             className={clsx(
               breadcrumb.active ? 'text-gray-900' : 'text-gray-500',
             )}
           >
-            <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
+            {/* Ensure proper link generation for the "Edit Invoice" breadcrumb */}
+            {breadcrumb.active ? (
+              <span>{breadcrumb.label}</span>
+            ) : (
+              <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
+            )}
             {index < breadcrumbs.length - 1 ? (
               <span className="mx-3 inline-block">/</span>
             ) : null}
